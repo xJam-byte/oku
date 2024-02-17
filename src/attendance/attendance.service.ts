@@ -16,5 +16,6 @@ export class AttendanceService {
 
   async addAttendance(dto: CreateAttendanceDto) {
     const data = await this.attRepository.create(dto);
+    return data;
   }
 }
