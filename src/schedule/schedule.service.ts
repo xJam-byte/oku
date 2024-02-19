@@ -29,10 +29,13 @@ export class ScheduleService {
     return schedule;
   }
 
-  async getMonthSchedule(month: string) {
+  async getMonthSchedule(month: string, year: string) {
     const schedule = await this.scheduleRepository.findAll();
     const newschedule = schedule.filter((one) => {
-      return one.lesson_date.split("-")[1] == month;
+      return (
+        one.lesson_date.split("-")[1] == month &&
+        one.lesson_date.split("-")[0] == year
+      );
     });
     return newschedule;
   }
