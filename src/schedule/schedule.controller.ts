@@ -22,8 +22,11 @@ export class ScheduleController {
 
   @Get("/month")
   getMonthSchedule(@Query("month") month: string, @Query("year") year: string) {
-    console.log(year);
-
     return this.scheduleService.getMonthSchedule(month, year);
+  }
+
+  @Get("/week")
+  getWeekSchedule(@Query("date") date: string) {
+    return this.scheduleService.getWeekSchedule(date);
   }
 }

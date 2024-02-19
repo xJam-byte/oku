@@ -39,4 +39,19 @@ export class ScheduleService {
     });
     return newschedule;
   }
+
+  async getWeekSchedule(date: string) {
+    const scheduleByMonth = await this.getMonthSchedule(
+      date.split("-")[1],
+      date.split("-")[0]
+    );
+    const requiredDay = Number(date.split("-")[2]);
+    const newschedule = scheduleByMonth.filter((one) => {
+      const nowday = Number(one.lesson_date.split("-")[2]);
+      if (nowday <= requiredDay + 7 && nowday >= requiredDay) {
+        return one;
+      }
+    });
+    return newschedule;
+  }
 }
