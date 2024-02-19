@@ -10,6 +10,7 @@ export class ScheduleController {
   addSchedule(@Body() dto: CreateScheduleDto) {
     return this.scheduleService.createSchedule(dto);
   }
+  
   @Get()
   getAllShedule() {
     return this.scheduleService.getAllSchedule();
